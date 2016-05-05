@@ -5,9 +5,9 @@ return [
         // db settings
         'db' => [
             'hostname' => "localhost",
-            'username' => "slimtest",
-            'password' => "password",
-            'dbname'   => "slimtest"
+            'username' => "inkimagi_moneypl",
+            'password' => "moneyplant",
+            'dbname'   => "inkimagi_moneyplant"
         ],
 
         'hmvc' => [

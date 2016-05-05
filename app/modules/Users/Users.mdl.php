@@ -1,5 +1,6 @@
 <?php
 use \AmitKhare\SlimHMVC\baseModel;
+use \AmitKhare\SlimHMVC\ValidateIt;
 class Users_mdl extends baseModel {
 	protected  $tableName="users";
     function __construct($c) {
@@ -7,62 +8,64 @@ class Users_mdl extends baseModel {
     }
 
     function findAll(){
-        return parent::findAll();
+        return parent::_findAll();
 	}
 
 	function findOne($id,$key =  "`id` = "){
-		return parent::findOne($id,$key);
+		return parent::_findOne($id,$key);
 	}
 
 	function store ($data){
 		$data = $this->db->filter( $data );
-		$status = setStatus();
 
 		$v = new ValidateIt();
-		$v->check($data,'price','required|numeric');
-		$v->check($data,'description','required|numeric');
+		$v->check($data,'username','required|numeric');
+		$v->check($data,'password','required|numeric');
+		$v->check($data,'email','required|numeric');
 
 		if($v->isValid() !== true) {
 		    return $v->getStatus();
 		}
 		$data = array(
-			"price"=>$data['price'],
-			"description"=>$data['description'],
+			"username"=>$data['username'],
+			"email"=>$data['email'],
+			"password"=>$data['password'],
 			"visible"=>ValidateIt::ifSet($data,'visible',0)
 		);
-		if($id = parent::store($data)){
-			$status = setStatus(200,$id);
+		if($id = parent::_store($data)){
+			$v->setStatus(200,array("id"=>$id));
 		} else {
-			$status = setStatus(500,'something went wrong');
+			$v->setStatus(500,'something went wrong');
 		}
-		return $status;
+		return $v->getStatus();
 	}
 
 	function update($id, $data){
 	 	$data = $this->db->filter( $data );
-		$status = setStatus();
 
 		$v = new ValidateIt();
-		$v->check($data,'price','required|numeric');
-		$v->check($data,'description','required|numeric');
-
+		$v->check($data,'username','required|numeric');
+		$v->check($data,'password','required|numeric');
+		$v->check($data,'email','required|numeric');
+		
 		if($v->isValid() !== true) {
 		    return $v->getStatus();
 		}
 		$data = array(
-				"price"=>$data['price'],
-				"description"=>$data['description'],
-				"visible"=>ValidateIt::ifSet($data,'visible',0)
-			);
-		if(parent::update($id,$data)){
-			$status = setStatus(200,'data updated');
+			"username"=>$data['username'],
+			"email"=>$data['email'],
+			"password"=>$data['password'],
+			"visible"=>ValidateIt::ifSet($data,'visible',0)
+		);
+		if(parent::_update($id,$data)){
+			$v->setStatus(200,'data updated');
 		} else {
-			$status = setStatus(500,'something went wrong');
+			$v->setStatus(500,'something went wrong');
 		}
-		return $status;
+		return $v->getStatus();
      }
 
      function delete($id){
-     	return parent::delete($id);
+     	return parent::_delete($id);
      }
 }

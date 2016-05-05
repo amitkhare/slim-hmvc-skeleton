@@ -35,4 +35,49 @@ class Users extends baseController {
                 ->write(json_encode(array("code"=>404,"msg"=>"No records found")));
         }
     }
+
+    function  store($request, $response, $args){
+        $parsedBody = $request->getParsedBody();
+        $result = $this->model->store($parsedBody);
+        if($result) {
+            return $response->withStatus(200)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode($result));
+
+        } else {
+            return $response->withStatus(500)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode(array("code"=>500,"msg"=>"Somethin went wrong.")));
+        }
+    }
+
+    function  update ($request, $response, $args){
+        $parsedBody = $request->getParsedBody();
+        $result = $this->model->update($args['id'],$parsedBody);
+        if($result) {
+            return $response->withStatus(200)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode($result));
+
+        } else {
+            return $response->withStatus(404)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode(array("code"=>404,"msg"=>"Invalid ID")));
+        }
+    }
+
+    function  delete ($request, $response, $args){
+        $parsedBody = $request->getParsedBody();
+        $result = $this->model->delete($args['id']);
+        if($result) {
+            return $response->withStatus(200)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode(array("code"=>200,"msg"=>"Record deleted")));
+
+        } else {
+            return $response->withStatus(404)
+                ->withHeader('Content-Type', 'application/json')
+                ->write(json_encode(array("code"=>404,"msg"=>"Invalid ID")));
+        }
+    }
 }
