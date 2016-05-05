@@ -1,0 +1,4 @@
+*.log
+/vendor/
+.phpintel/
+.DS_Store
