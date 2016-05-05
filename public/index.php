@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set("asia/kolkata");
 define("APPPATH",__DIR__.DIRECTORY_SEPARATOR."../app/");
 require __DIR__ . '/../vendor/autoload.php';
 
