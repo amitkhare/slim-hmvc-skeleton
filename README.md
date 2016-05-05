@@ -20,7 +20,10 @@ Replace `[my-app-name]` with the desired directory name for your new application
 
 
 
-Create a database and pass the credencials to /app/src/settings.php
+Create a database and pass the credentials to
+
+    /app/src/settings.php
+
 
 * Point your virtual host document root to your new application's root `/` directory. it will automatically redirect all calls to /public/index.php
 
