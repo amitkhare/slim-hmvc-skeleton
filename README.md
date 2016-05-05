@@ -23,9 +23,15 @@ Replace `[my-app-name]` with the desired directory name for your new application
 Create a database and pass the credentials to
 
     /app/src/settings.php
+    Import provided slimtest.sql
 
 
 * Point your virtual host document root to your new application's root `/` directory. it will automatically redirect all calls to /public/index.php
+
+Then visit DEMO:
+
+    http :// YOUR-VIRUAL-HOST-ROOT/users
+    http :// YOUR-VIRUAL-HOST-ROOT/users/1
 
 That's it!
 
