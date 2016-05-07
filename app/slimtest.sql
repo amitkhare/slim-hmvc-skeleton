@@ -28,7 +28,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `visible` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -36,7 +36,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `updated_at`, `visible`) VALUES
 (1, 'amit', 'pword', 'med@mail.com', '2016-04-15 16:10:51', '0000-00-00 00:00:00', 1),
-(2, 'khare', 'd41d8cd98f00b204e9800998ecf8427e', 'me@mail.com', '2016-05-05 16:06:03', '0000-00-00 00:00:00', 0);
+(7, 'khare', 'd41d8cd98f00b204e9800998ecf8427e', 'me@mail.com', '2016-05-05 16:06:03', '0000-00-00 00:00:00', 0);
 
 --
 -- Indexes for dumped tables
@@ -57,17 +57,4 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `pages` (
-  `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `body` varchar(250) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `visible` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;

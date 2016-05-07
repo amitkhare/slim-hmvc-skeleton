@@ -4,8 +4,15 @@ use \AmitKhare\SlimHMVC\baseController;
 
 class Users extends baseController {
     protected $moduleName ="Users";
+    protected $modules;
     function __construct($c) {
         parent::__construct($c);
+        $this->modules = new Modules($c);
+    }
+
+    function  home ($request, $response, $args){
+        $data['title'] ="Slim HMVC";
+        echo $this->modules->loadView("Users","index",$data);
     }
 
     function  findAll($request, $response, $args){

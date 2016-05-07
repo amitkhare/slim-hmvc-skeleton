@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Basic Slim HMVC module template built on Bootstrap.">
     <meta name="author" content="Amit Kumar Khare @amitkhare">
-    <link rel="icon" href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/imgs/favicon.ico">
+    <link rel="icon" href="./imgs/favicon.ico">
 
     <title><?php echo $title; ?></title>
 
@@ -37,7 +37,7 @@
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#">Home</a></li>
-                  <li><a href="https://khare.co/contacts">Contact</a></li>
+                  <li><a href="#contacts">Contact</a></li>
                 </ul>
               </nav>
             </div>
@@ -45,9 +45,31 @@
 
           <div class="inner cover">
             <h1 class="cover-heading"><?php echo $title; ?></h1>
-            <p class="lead">A HMVC modular application for Slim Framework. Use this application to quickly setup and start working on a new Slim Framework 3 with HMVC capebilities.</p>
+            <p class="lead">A HMVC modular application for Slim Framework. Use this application to quickly setup and
+              start working on a new <a href="https://slimframework.com"  target="_blank">Slim Framework 3</a> with <a href="https://en.wikipedia.org/wiki/Hierarchical_model%E2%80%93view%E2%80%93controller" target="_blank">HMVC</a> capebilities.</p>
             <p class="lead">
-              <a href="https://github.com/amitkhare/slim-hmvc" class="btn btn-lg btn-default">Learn more</a>
+              This page is generated from: 
+                <table class="table table-bordered">
+                  <tr>
+                    <td>Controller:</td>
+                    <td>ROOT / app / modules / Pages / Pages.php</td>
+                  </tr>
+                  <tr>
+                    <td>Routes file:</td>
+                    <td>ROOT / app / modules / Pages / routes.php</td>
+                  </tr>
+                  <tr>
+                    <td>Model:</td>
+                    <td>ROOT / app / modules / Pages / Pages.mdl.php</td>
+                  </tr>
+                  <tr>
+                    <td>ViewFile:</td>
+                    <td>ROOT / app / modules / Pages / views/Index.php</td>
+                  </tr>
+                </table>
+            </p>
+            <p class="lead">
+              <a href="https://github.com/amitkhare/slim-hmvc-skeleton" target="_blank" class="btn btn-lg btn-default">Learn more</a>
             </p>
           </div>
 

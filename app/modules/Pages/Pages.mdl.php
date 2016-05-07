@@ -1,8 +1,8 @@
 <?php
 use \AmitKhare\SlimHMVC\baseModel;
 use \AmitKhare\ValidBit\ValidBit;
-class Users_mdl extends baseModel {
-	protected  $tableName="users";
+class Pages_mdl extends baseModel {
+	protected  $tableName="pages";
     function __construct($c) {
         parent::__construct($c);
     }
@@ -21,17 +21,15 @@ class Users_mdl extends baseModel {
 		$v = new ValidBit();
 		$v->setSource($data);
 		
-		$v->check('username','required|string');
-		$v->check('password','required|string');
-		$v->check('email','required|email');
-
+		$v->check('title','required|string');
+		$v->check('body','required|string');
+	
 		if($v->isValid() !== true) {
 		    return $v->getStatus();
 		}
 		$data = array(
-			"username"=>$data['username'],
-			"email"=>$data['email'],
-			"password"=>$data['password'],
+			"title"=>$data['title'],
+			"body"=>$data['body'],
 			"visible"=>ValidBit::ifSet($data,'visible',0)
 		);
 		if($id = parent::_store($data)){
@@ -48,17 +46,15 @@ class Users_mdl extends baseModel {
 		$v = new ValidBit();
 		$v->setSource($data);
 		
-		$v->check('username','required|string');
-		$v->check('password','required|string');
-		$v->check('email','required|email');
-
+		$v->check('title','required|string');
+		$v->check('body','required|string');
+	
 		if($v->isValid() !== true) {
 		    return $v->getStatus();
 		}
 		$data = array(
-			"username"=>$data['username'],
-			"email"=>$data['email'],
-			"password"=>$data['password'],
+			"title"=>$data['title'],
+			"body"=>$data['body'],
 			"visible"=>ValidBit::ifSet($data,'visible',0)
 		);
 		if(parent::_update($id,$data)){

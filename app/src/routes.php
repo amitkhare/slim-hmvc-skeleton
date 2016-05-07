@@ -1,6 +1,5 @@
 <?php
 // Routes
-
-$app->get('/[{name}]', function ($request, $response, $args) {
+//$app->get('/someroute', function ($request, $response, $args) {
     // Sample log message
-});
+//});
