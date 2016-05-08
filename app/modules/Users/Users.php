@@ -4,15 +4,8 @@ use \AmitKhare\SlimHMVC\baseController;
 
 class Users extends baseController {
     protected $moduleName ="Users";
-    protected $modules;
     function __construct($c) {
         parent::__construct($c);
-        $this->modules = new Modules($c);
-    }
-
-    function  home ($request, $response, $args){
-        $data['title'] ="Slim HMVC";
-        echo $this->modules->loadView("Users","index",$data);
     }
 
     function  findAll($request, $response, $args){
@@ -39,7 +32,7 @@ class Users extends baseController {
         } else {
             return $response->withStatus(404)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode(array("code"=>404,"msg"=>"No records found")));
+                ->write(json_encode(array("code"=>404,"msgs"=>array("Invalid id"))));
         }
     }
 
@@ -47,7 +40,7 @@ class Users extends baseController {
         $parsedBody = $request->getParsedBody();
         $result = $this->model->store($parsedBody);
         if($result) {
-            return $response->withStatus(200)
+            return $response->withStatus((isset($result['code']) ? $result['code'] : 201 ))
                 ->withHeader('Content-Type', 'application/json')
                 ->write(json_encode($result));
 
@@ -62,7 +55,7 @@ class Users extends baseController {
         $parsedBody = $request->getParsedBody();
         $result = $this->model->update($args['id'],$parsedBody);
         if($result) {
-            return $response->withStatus(200)
+            return $response->withStatus((isset($result['code']) ? $result['code'] : 200 ))
                 ->withHeader('Content-Type', 'application/json')
                 ->write(json_encode($result));
 
@@ -77,14 +70,14 @@ class Users extends baseController {
         $parsedBody = $request->getParsedBody();
         $result = $this->model->delete($args['id']);
         if($result) {
-            return $response->withStatus(200)
+            return $response->withStatus((isset($result['code']) ? $result['code'] : 200 ))
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode(array("code"=>200,"msg"=>"Record deleted")));
+                ->write(json_encode($result));
 
         } else {
-            return $response->withStatus(404)
+            return $response->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode(array("code"=>404,"msg"=>"Invalid ID")));
+                ->write(json_encode(array("code"=>500,"msgs"=>array("something went wrong"))));
         }
     }
 }
