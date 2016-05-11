@@ -1,6 +1,6 @@
 # slim-hmvc-skeleton
 
-A HMVC modular application for Slim Framework. Use this application to quickly setup and start working on a new Slim Framework 3 with HMVC capebilities.
+A HMVC modular application for Slim Framework. Use this application to quickly setup and start working on a new Slim Framework 3 with HMVC capabilities.
 
 ## Install
 
@@ -30,6 +30,7 @@ Create a database and pass the credentials to
 
 Then visit DEMO:
 
+    http :// YOUR-VIRUAL-HOST-ROOT/
     http :// YOUR-VIRUAL-HOST-ROOT/users
     http :// YOUR-VIRUAL-HOST-ROOT/users/1
 
